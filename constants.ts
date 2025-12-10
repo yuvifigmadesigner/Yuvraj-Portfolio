@@ -1,8 +1,7 @@
 
-
 // Using a placeholder image that resembles a dark, moody portrait to match the "First Image" description.
 // In a real app, you would replace this URL with the actual image of "Dave".
-export const BACKGROUND_IMAGE_URL = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=2787&auto=format&fit=crop";
+export const BACKGROUND_IMAGE_URL = "https://drive.google.com/uc?export=view&id=1sEaz0CRdS33fnYTl-F1Oqpk_eue70wUv";
 
 export const SOCIAL_LINKS = [
   { label: 'CV', href: 'https://drive.google.com/file/d/1gCc5R2GAH81ku-GEUP99N8Nv4Dex4rHj/view?usp=sharing' },

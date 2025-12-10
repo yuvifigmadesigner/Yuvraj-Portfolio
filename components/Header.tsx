@@ -46,71 +46,73 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
 
   return (
     <>
-      <header className="flex items-center justify-between py-6 md:py-8 px-6 md:px-12 border-b border-white/10 relative z-20 bg-[#111827]/80 backdrop-blur-md md:bg-transparent md:backdrop-blur-none">
-        {/* Name / Logo */}
-        <div 
-          className="text-white font-medium text-lg tracking-wide cursor-pointer hover:opacity-80 transition-opacity z-50 relative"
-          onClick={() => {
-            onNavigate('home');
-            setIsMenuOpen(false);
-          }}
-        >
-          Yuvraj Gupta
-        </div>
+      <header className="border-b border-white/10 relative z-20 bg-[#111827]/80 backdrop-blur-md md:bg-transparent md:backdrop-blur-none w-full">
+        <div className="flex items-center justify-between py-6 md:py-8 px-6 md:px-12 w-full max-w-screen-2xl 2xl:max-w-[1800px] mx-auto">
+          {/* Name / Logo */}
+          <div 
+            className="text-white font-medium text-lg 2xl:text-2xl tracking-wide cursor-pointer hover:opacity-80 transition-opacity z-50 relative"
+            onClick={() => {
+              onNavigate('home');
+              setIsMenuOpen(false);
+            }}
+          >
+            Yuvraj Gupta
+          </div>
 
-        {/* DESKTOP NAVIGATION */}
-        <nav className="hidden md:flex items-center space-x-8">
-          {NAV_LINKS.map((link) => {
-            const isActive = 
-              (link.label === 'Home' && currentPage === 'home') ||
-              (link.label === 'Work' && currentPage === 'work') || 
-              (link.label === 'About' && currentPage === 'about');
+          {/* DESKTOP NAVIGATION */}
+          <nav className="hidden md:flex items-center space-x-8 2xl:space-x-12">
+            {NAV_LINKS.map((link) => {
+              const isActive = 
+                (link.label === 'Home' && currentPage === 'home') ||
+                (link.label === 'Work' && currentPage === 'work') || 
+                (link.label === 'About' && currentPage === 'about');
 
-            return (
-              <a 
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.label)}
-                className={`text-sm font-medium transition-colors ${
-                  isActive ? 'text-white' : 'text-white/60 hover:text-white'
-                }`}
-              >
-                {link.label}
+              return (
+                <a 
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.label)}
+                  className={`text-sm 2xl:text-lg font-medium transition-colors ${
+                    isActive ? 'text-white' : 'text-white/60 hover:text-white'
+                  }`}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
+          </nav>
+
+          {/* DESKTOP SOCIAL ICONS */}
+          <div className="hidden md:flex items-center space-x-5 2xl:space-x-8 text-white">
+            <div className="relative group">
+              <a href={getLink('CV')} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity block" aria-label="Resume">
+                <FileText size={20} strokeWidth={1.5} className="2xl:w-6 2xl:h-6" />
               </a>
-            );
-          })}
-        </nav>
+              <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-white/10 backdrop-blur-sm border border-white/5 text-white text-[10px] uppercase tracking-wider rounded opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap">Resume</span>
+            </div>
+            <div className="relative group">
+              <a href={getLink('LinkedIn')} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity block" aria-label="LinkedIn">
+                <Linkedin size={20} strokeWidth={1.5} className="2xl:w-6 2xl:h-6" />
+              </a>
+              <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-white/10 backdrop-blur-sm border border-white/5 text-white text-[10px] uppercase tracking-wider rounded opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap">LinkedIn</span>
+            </div>
+            <div className="relative group">
+              <a href={getLink('Instagram')} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity block" aria-label="Instagram">
+                <Instagram size={20} strokeWidth={1.5} className="2xl:w-6 2xl:h-6" />
+              </a>
+              <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-white/10 backdrop-blur-sm border border-white/5 text-white text-[10px] uppercase tracking-wider rounded opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap">Instagram</span>
+            </div>
+          </div>
 
-        {/* DESKTOP SOCIAL ICONS */}
-        <div className="hidden md:flex items-center space-x-5 text-white">
-          <div className="relative group">
-            <a href={getLink('CV')} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity block" aria-label="Resume">
-              <FileText size={20} strokeWidth={1.5} />
-            </a>
-            <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-white/10 backdrop-blur-sm border border-white/5 text-white text-[10px] uppercase tracking-wider rounded opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap">Resume</span>
-          </div>
-          <div className="relative group">
-            <a href={getLink('LinkedIn')} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity block" aria-label="LinkedIn">
-              <Linkedin size={20} strokeWidth={1.5} />
-            </a>
-            <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-white/10 backdrop-blur-sm border border-white/5 text-white text-[10px] uppercase tracking-wider rounded opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap">LinkedIn</span>
-          </div>
-          <div className="relative group">
-            <a href={getLink('Instagram')} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity block" aria-label="Instagram">
-              <Instagram size={20} strokeWidth={1.5} />
-            </a>
-            <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-white/10 backdrop-blur-sm border border-white/5 text-white text-[10px] uppercase tracking-wider rounded opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap">Instagram</span>
-          </div>
+          {/* MOBILE MENU BUTTON (Trigger) */}
+          <button 
+            className="md:hidden text-white p-1 z-50 relative focus:outline-none"
+            onClick={() => setIsMenuOpen(true)}
+            aria-label="Open menu"
+          >
+            <Menu size={28} />
+          </button>
         </div>
-
-        {/* MOBILE MENU BUTTON (Trigger) */}
-        <button 
-          className="md:hidden text-white p-1 z-50 relative focus:outline-none"
-          onClick={() => setIsMenuOpen(true)}
-          aria-label="Open menu"
-        >
-          <Menu size={28} />
-        </button>
       </header>
 
       {/* MOBILE MENU OVERLAY */}

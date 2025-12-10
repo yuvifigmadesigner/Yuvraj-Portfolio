@@ -70,9 +70,12 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onClose }) => {
       } else if (width < 1024) {
         // Tablet
         setConfig({ radius: 180, itemSize: 28, perspective: 220 });
-      } else {
-        // Desktop: Front scale ~5.3x (186px), Side scale ~1x (35px)
+      } else if (width < 1600) {
+        // Standard Desktop: Front scale ~5.3x (186px), Side scale ~1x (35px)
         setConfig({ radius: 260, itemSize: 35, perspective: 320 });
+      } else {
+        // 4K / Ultra-wide Desktop: Larger Sphere
+        setConfig({ radius: 360, itemSize: 50, perspective: 450 });
       }
     };
 
