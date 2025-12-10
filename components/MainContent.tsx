@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Smile, Layers, Sparkles, Code, ChevronDown } from 'lucide-react';
+import { Smile, Layers, Sparkles, Code, ChevronDown, ArrowUpRight } from 'lucide-react';
 import { useISTTime } from '../hooks/useSeattleTime';
 import LightRays from './LightRays';
 import ServiceModal from './ServiceModal';
@@ -97,13 +97,18 @@ const MainContent: React.FC = () => {
             {/* Service 1 */}
             <div 
               onClick={() => handleServiceClick('UX/UI Design SaaS')}
-              className="p-8 2xl:p-12 rounded-[2.5rem] bg-[#1a1512]/40 border border-white/10 backdrop-blur-md hover:bg-[#2a2420]/60 transition-all duration-300 group hover:-translate-y-1 hover:shadow-2xl cursor-pointer"
+              className="relative flex flex-col p-8 2xl:p-12 rounded-[2.5rem] bg-[#1a1512]/40 border border-white/10 backdrop-blur-md hover:bg-[#2a2420]/60 transition-all duration-300 group hover:-translate-y-1 hover:shadow-2xl cursor-pointer"
             >
+                {/* Visual Indicator (Top Right) */}
+                <div className="absolute top-8 right-8 2xl:top-12 2xl:right-12 w-10 h-10 2xl:w-14 2xl:h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/30 group-hover:text-black group-hover:bg-white transition-all duration-300">
+                    <ArrowUpRight size={20} className="2xl:w-8 2xl:h-8" />
+                </div>
+
                 <div className="w-14 h-14 2xl:w-20 2xl:h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:bg-white group-hover:text-black transition-colors duration-300">
                     <Layers size={28} strokeWidth={1.5} className="2xl:w-10 2xl:h-10" />
                 </div>
                 <h3 className="text-2xl 2xl:text-4xl font-bold mb-4 tracking-tight">UX/UI Design Saas</h3>
-                <p className="text-white/60 leading-relaxed text-lg 2xl:text-2xl font-light">
+                <p className="text-white/60 leading-relaxed text-lg 2xl:text-2xl font-light flex-1">
                     Designing seamless experiences to engage users and drive results.
                 </p>
             </div>
@@ -111,13 +116,18 @@ const MainContent: React.FC = () => {
             {/* Service 2 */}
             <div 
               onClick={() => handleServiceClick('Re-Design SaaS')}
-              className="p-8 2xl:p-12 rounded-[2.5rem] bg-[#1a1512]/40 border border-white/10 backdrop-blur-md hover:bg-[#2a2420]/60 transition-all duration-300 group hover:-translate-y-1 hover:shadow-2xl cursor-pointer"
+              className="relative flex flex-col p-8 2xl:p-12 rounded-[2.5rem] bg-[#1a1512]/40 border border-white/10 backdrop-blur-md hover:bg-[#2a2420]/60 transition-all duration-300 group hover:-translate-y-1 hover:shadow-2xl cursor-pointer"
             >
+                 {/* Visual Indicator (Top Right) */}
+                 <div className="absolute top-8 right-8 2xl:top-12 2xl:right-12 w-10 h-10 2xl:w-14 2xl:h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/30 group-hover:text-black group-hover:bg-white transition-all duration-300">
+                    <ArrowUpRight size={20} className="2xl:w-8 2xl:h-8" />
+                </div>
+
                  <div className="w-14 h-14 2xl:w-20 2xl:h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:bg-white group-hover:text-black transition-colors duration-300">
                     <Sparkles size={28} strokeWidth={1.5} className="2xl:w-10 2xl:h-10" />
                 </div>
                 <h3 className="text-2xl 2xl:text-4xl font-bold mb-4 tracking-tight">Re-Design Saas</h3>
-                <p className="text-white/60 leading-relaxed text-lg 2xl:text-2xl font-light">
+                <p className="text-white/60 leading-relaxed text-lg 2xl:text-2xl font-light flex-1">
                     Creating stunning, user-centric redesigning that represent your brand.
                 </p>
             </div>
@@ -125,13 +135,18 @@ const MainContent: React.FC = () => {
             {/* Service 3 - Vibe Coding */}
             <div 
               onClick={() => handleServiceClick('Vibe Coding')}
-              className="p-8 2xl:p-12 rounded-[2.5rem] bg-[#1a1512]/40 border border-white/10 backdrop-blur-md hover:bg-[#2a2420]/60 transition-all duration-300 group hover:-translate-y-1 hover:shadow-2xl cursor-pointer"
+              className="relative flex flex-col p-8 2xl:p-12 rounded-[2.5rem] bg-[#1a1512]/40 border border-white/10 backdrop-blur-md hover:bg-[#2a2420]/60 transition-all duration-300 group hover:-translate-y-1 hover:shadow-2xl cursor-pointer"
             >
+                 {/* Visual Indicator (Top Right) */}
+                 <div className="absolute top-8 right-8 2xl:top-12 2xl:right-12 w-10 h-10 2xl:w-14 2xl:h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/30 group-hover:text-black group-hover:bg-white transition-all duration-300">
+                    <ArrowUpRight size={20} className="2xl:w-8 2xl:h-8" />
+                </div>
+
                  <div className="w-14 h-14 2xl:w-20 2xl:h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:bg-white group-hover:text-black transition-colors duration-300">
                     <Code size={28} strokeWidth={1.5} className="2xl:w-10 2xl:h-10" />
                 </div>
                 <h3 className="text-2xl 2xl:text-4xl font-bold mb-4 tracking-tight">Vibe Coding</h3>
-                <p className="text-white/60 leading-relaxed text-lg 2xl:text-2xl font-light">
+                <p className="text-white/60 leading-relaxed text-lg 2xl:text-2xl font-light flex-1">
                     Translating creative vision into pixel-perfect reality with zero friction.
                 </p>
             </div>

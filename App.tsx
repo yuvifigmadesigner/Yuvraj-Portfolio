@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Background from './components/Background';
 import Header from './components/Header';
@@ -11,7 +10,7 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen w-full flex flex-col font-sans relative bg-gray-900 text-white selection:bg-white/20">
-      {/* Background Layer */}
+      {/* Background Layer - Dark Noisy Texture */}
       <Background />
 
       {/* Foreground Content */}

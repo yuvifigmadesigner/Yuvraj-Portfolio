@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import { ArrowUpRight, Mail, Phone, Coffee, Camera, Mountain, MonitorOff, Heart } from 'lucide-react';
 import LightRays from './LightRays';
 import PhotoGallery from './PhotoGallery';
-import { BACKGROUND_IMAGE_URL } from '../constants';
+import { PROFILE_IMAGE_URL } from '../constants';
 
 const About: React.FC = () => {
-  const showGalleryHandler = () => setShowGallery(true);
   const [showGallery, setShowGallery] = useState(false);
+  const showGalleryHandler = () => setShowGallery(true);
 
   return (
     <>
@@ -52,8 +52,9 @@ const About: React.FC = () => {
                          <div className="relative w-32 h-32 md:w-40 md:h-40 2xl:w-48 2xl:h-48 rounded-full p-[2px] bg-gradient-to-tr from-white/20 to-white/5 shadow-2xl">
                              <div className="w-full h-full rounded-full overflow-hidden bg-black/50 border border-white/10 relative z-10">
                                 <img 
-                                    src={BACKGROUND_IMAGE_URL} 
+                                    src={PROFILE_IMAGE_URL} 
                                     alt="Profile" 
+                                    referrerPolicy="no-referrer"
                                     className="w-full h-full object-cover object-center transform transition-transform duration-700 ease-out group-hover:scale-110 opacity-90 group-hover:opacity-100" 
                                 />
                              </div>
@@ -147,7 +148,7 @@ const About: React.FC = () => {
                     </div>
                     <div className="flex justify-between items-center mb-2">
                       <h3 className="text-xl 2xl:text-2xl font-medium">Photography</h3>
-                      <span className="text-xs 2xl:text-sm text-white/40 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">View</span>
+                      <span className="text-xs 2xl:text-sm text-white/40 uppercase tracking-widest opacity-100 transition-opacity">View</span>
                     </div>
                     <p className="text-white/60 text-sm 2xl:text-lg leading-relaxed">
                         Capturing textures, light, and candid moments. I love documenting the world through my lens.

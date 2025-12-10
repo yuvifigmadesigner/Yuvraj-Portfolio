@@ -6,10 +6,6 @@ import LightRays from './LightRays';
 
 const ProjectCard: React.FC<{ project: typeof SIDE_PROJECTS[0], index: number }> = ({ project, index }) => {
   // Acrylic Glass Effect with Warm Tint
-  // Enhanced hover states:
-  // - bg becomes more opaque/warmer
-  // - backdrop blur increases
-  // - border becomes more visible
   const glassClasses = 'bg-[#1a1512]/60 backdrop-blur-xl border border-white/10 text-white shadow-2xl hover:bg-[#2a2420]/80 hover:backdrop-blur-2xl hover:border-white/30';
 
   return (
@@ -47,13 +43,15 @@ const ProjectCard: React.FC<{ project: typeof SIDE_PROJECTS[0], index: number }>
         </p>
       </div>
 
-      {/* Image / Preview Section */}
+      {/* Image Preview Section */}
       <div className="mt-auto relative w-full flex-1 min-h-[240px] 2xl:min-h-[300px] rounded-[1.5rem] overflow-hidden group/image shadow-inner bg-black/30 border border-white/5">
-        {/* Check if image is a link (for doodle) or if we should try iframe */}
-        {/* For the requested "doodle" update, we are using img tag again as requested by user previously to replace iframe preview with doodle image */}
+         {/* Static Image with Eager Loading and High Priority */}
          <img 
             src={project.image} 
             alt={project.title}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-90 group-hover:opacity-100"
          />
          

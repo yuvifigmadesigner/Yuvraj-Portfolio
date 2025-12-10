@@ -8,38 +8,151 @@ interface SphereItem {
   image: string;
   title: string;
   description: string;
+  settings: string;
 }
 
-// Unsplash photography collection - Expanded for better sphere density
-const IMAGES = [
-  "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&q=80", // Nature/Landscape
-  "https://images.unsplash.com/photo-1518173946687-a4c88928d9fd?w=800&q=80", // Minimalist
-  "https://images.unsplash.com/photo-1504198458649-3128b932f49e?w=800&q=80", // Architecture
-  "https://images.unsplash.com/photo-1500485035595-cbe6f645feb1?w=800&q=80", // Texture
-  "https://images.unsplash.com/photo-1542202229-7d9322d5b13d?w=800&q=80", // Urban
-  "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800&q=80", // Nature
-  "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=800&q=80", // Dark
-  "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80", // Fog
-  "https://images.unsplash.com/photo-1501854140884-074cf27f70c0?w=800&q=80", // Colors
-  "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&q=80", // Forest
-  "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=800&q=80", // Abstract
-  "https://images.unsplash.com/photo-1559494007-9f5847c49d94?w=800&q=80", // Modern
-  "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80", // Portrait
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80", // Portrait
-  "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80", // Portrait
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80", // Portrait
-  "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&q=80", // People
-  "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&q=80", // People
-  "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=80", // Fashion
-  "https://images.unsplash.com/photo-1513956589380-bad6acb9b9d4?w=800&q=80", // Art
+const ITEMS: SphereItem[] = [
+  {
+    id: 0,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af19493877707f642afe2037e80a5a0ee3dd21f7dfb68a5b412d307352d49774d01081b0e07acb2fbdc3e2de32689cff6ca228329849b9d368db3c2af4396b05df177b6",
+    title: "Golden Hour Silhouette",
+    description: "The sun dipped low, painting the world in warm hues. For a fleeting moment, everything felt suspended in time, bathed in liquid gold.",
+    settings: "ISO 100 • f/1.8 • 1/500s"
+  },
+  {
+    id: 1,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af19493903f85fa81066ead06a29c3a5f88c9265e96afb59563e6ad0109071ea9ef1083309383005549e328ad99a859c69b1c2d983569f7b752eb792a6ffd3eb0b78477",
+    title: "Urban Echoes",
+    description: "The city breathes in patterns of concrete and light. Every corner holds a secret, every shadow tells the story of a million passersby.",
+    settings: "ISO 200 • f/2.2 • 1/120s"
+  },
+  {
+    id: 2,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af1949353248c0a75a1f0061f441f183375497d4ddaeee46cbb402613c36d77659e1f3e6023483859483b3a7f250ea9e76a17b39913cbb7e7b26b6e294eb18885141828",
+    title: "Evening Calm",
+    description: "That fleeing moment of blue hour, where the day's noise settles into a whisper, and the world feels perfectly still.",
+    settings: "ISO 400 • f/1.7 • 1/60s"
+  },
+  {
+    id: 3,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af19493e3880e07e6ca1af4590a4c5e3300d8941be52e21455a4b3f52d905198a8c7900432cc1b91784e6fa531b4f729289ae60efa9ca88f4c80c28a8dfd710163dd264",
+    title: "Infinite Horizons",
+    description: "Standing at the edge where the sky meets the earth. A reminder of how small we are and how vast the possibilities can be.",
+    settings: "ISO 50 • f/2.2 • 1/1000s"
+  },
+  {
+    id: 4,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af194937c852ba78df0c802a3d4ea5d9a6ba0964b0a69ae7590028afb23190b5c403b242696855f4b5b555ae845776defe2973a2676c88aac91069788e5f1c5364adb13",
+    title: "Dusk Reflections",
+    description: "Water mirroring the sky's mood. A dual reality where the ripples distort the truth into something dreamlike and surreal.",
+    settings: "ISO 150 • f/1.8 • 1/200s"
+  },
+  {
+    id: 5,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af19493c9e84c9e1e70857ce124f461ea7cff110f6805bfc69ab7eda268ad1cb8ca0b8f6b4b2ebc6efb92dfaf863973ba82e10326702ef3328dc0d17a2e03b4563ddca5",
+    title: "Nature's Palette",
+    description: "Green isn't just a color; it's a feeling of life. The forest floor hums with the silent, vibrant energy of growth.",
+    settings: "ISO 100 • f/1.9 • 1/400s"
+  },
+  {
+    id: 6,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af19493dbd2a2a858959c4359c6aea9ae343a58829cee46203bd4896a230062b7b6d5d0f29d553c4457dece5de78dae2fd129a05bb0da4c3e00db4a35bc5a961bc3f482",
+    title: "Afternoon Light",
+    description: "The sun at its peak, unapologetic and bright. It carves shapes out of the mundane, turning the ordinary into art.",
+    settings: "ISO 50 • f/2.4 • 1/1200s"
+  },
+  {
+    id: 7,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af19493996c4f56797370c9e8853d1557e4599b1506b71c433c15ddc5cf53a030f0ebe46404a09c68466ba524a3a39ea98abedb42c8f65ab7bdba368fa2592f122b7cb6",
+    title: "Night Mode",
+    description: "When the lights go out, the real city wakes up. Neon pulses like a heartbeat in the dark, guiding the wanderers home.",
+    settings: "ISO 1200 • f/1.6 • 1/15s"
+  },
+  {
+    id: 8,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af1949395c4b4c6a5eae38449ef6cd3d8df02d86f0a61c296424eb53b791825178c97257fc5e189aca78fc46aa072e8aafda96fd5e7c632f74e8c5bcebe0610328d46b1",
+    title: "Steel Giants",
+    description: "Reaching for the clouds, a testament to human ambition. Standing tall against the passage of time and the shifting elements.",
+    settings: "ISO 100 • f/2.0 • 1/320s"
+  },
+  {
+    id: 9,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af19493bb385c636c58c1e3b7b79eb1cb01b13be1e7e002fb2fe174ee4abdd75156ecea9af6a0fff296a12888a1457f140c9ce63a2878dc5b47200c8cf959f854eb6832",
+    title: "Drifting Thoughts",
+    description: "Soft cotton castles building and dissolving in the blue. A gentle reminder that nothing stays the same, and that is beautiful.",
+    settings: "ISO 50 • f/2.2 • 1/800s"
+  },
+  {
+    id: 10,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af19493493ac320ff064faee32040a1f1e684376ca5ad2fd8af378d2829af39e12e3c573a2f91417633eac5484408a56e24992e2a94e4a06af10de59a4ec58416dcd291",
+    title: "Street Candid",
+    description: "A split second frozen forever. The laughter, the rush, the fleeting glance—life happening in the blink of an eye.",
+    settings: "ISO 200 • f/1.8 • 1/250s"
+  },
+  {
+    id: 11,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af19493416a0456074bb278309dd6227466dd1d9c22206671e6ddf111090f7072ebf1e65e202d411ee4e084e492cc26868946d7a467748c5f2e34e53e838c08b7ca5d61",
+    title: "Foliage Detail",
+    description: "The veins of a leaf, a map of life itself. Nature's intricate design, perfect in its imperfection, revealing a hidden world.",
+    settings: "ISO 100 • f/2.0 • 1/160s"
+  },
+  {
+    id: 12,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af19493470f5acb92fe5cd5f077ebb2d0fee487b10c0698b508c4f65cad8761e073873b3e79eb09462e2a3b9e326b916b77c14acc402a74ea42e20a40c1bf766cfa92df",
+    title: "Shadow Play",
+    description: "Light cannot exist without darkness. The dance between the two creates the drama of existence, shaping the world we see.",
+    settings: "ISO 125 • f/2.4 • 1/500s"
+  },
+  {
+    id: 13,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af1949343e782ef10a3aef5139a2e7c59b41d578ef4ca2b9813d71d09f9d5bb2b180d45b55c306952ded425bb421ae658eac9ac388fe451de9347c3404a75c57b58cc14",
+    title: "Quiet Corner",
+    description: "The warmth of a lamp, the texture of a chair. Spaces that hold our quietest thoughts and offer a sanctuary from the noise.",
+    settings: "ISO 800 • f/1.7 • 1/40s"
+  },
+  {
+    id: 14,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af19493fceefcef4be5e7981a8861578046bacfaceb1c6a46c100827b7e17fb3c573acb9f80740b0f9c94cbab18a537797a0a76223500f68dfc04df98327fc03b34c880",
+    title: "Neon Nights",
+    description: "Electric dreams buzzing in the rain. The colors bleed into the pavement, painting the night in vivid shades of cyberpunk.",
+    settings: "ISO 640 • f/1.8 • 1/30s"
+  },
+  {
+    id: 15,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af19493550149c45ee3d9bce1260f63b85c0148228b69e7079dedca93cc02ed295f3621c1bdc667c8a3099edfc65a8122ee0d7b18715397b13090a8b3823040451ac9a8",
+    title: "Glass & Water",
+    description: "Looking through the glass, seeing a world reversed. Is the reflection more real than the object standing before it?",
+    settings: "ISO 160 • f/2.0 • 1/120s"
+  },
+  {
+    id: 16,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af1949322745225e342e9d044e1e28fc6627b2e16e16515a0ca58c5cf0307ac2b23a435cb966d9a43bcaa6296e4fcffad58c57988323139f0f253fb1c2fb10ab798c49d",
+    title: "Macro World",
+    description: "The universe in a grain of sand. Zooming in reveals landscapes invisible to the naked eye, a hidden world waiting to be found.",
+    settings: "ISO 200 • f/2.4 • 1/100s"
+  },
+  {
+    id: 17,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af1949343e782ef10a3aef5139a2e7c59b41d57d7f828f08d23249646e5e10d21da0fb1237494ed809800ecc8bcf19a121982caa5d53d4ba11ad5d5f3dd60a3be0cd2c0",
+    title: "Leading Lines",
+    description: "Follow the path. It draws you in, guiding your gaze toward a destination unknown, promising an adventure just around the bend.",
+    settings: "ISO 100 • f/2.2 • 1/300s"
+  },
+  {
+    id: 18,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af1949375e9e631ec52c34e81486ef69b2c8e5ebf1ac84a8926717fd09eb6253974f6e584c48c8c30fef5502f660cd198ef2b1ccbfdecf8990f159a0e59f9ff6bef83f1",
+    title: "Minimalist Sky",
+    description: "Less is more. A single bird, a lone cloud. The beauty of emptiness allowing the mind to breathe and the soul to rest.",
+    settings: "ISO 50 • f/1.8 • 1/2000s"
+  },
+  {
+    id: 19,
+    image: "https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af19493437d4ef3cef5530bd9e38cb8b8a5f87a7b41a595a29fafc8a36d81fd096a1f0b17c17ad2f9ddd28df576de11e6ed6f01cf646bb15471b5562ba14b7210a88a44",
+    title: "Perfect Symmetry",
+    description: "Balance in chaos. Finding the perfect mirror image in a messy world, satisfying the deep human craving for order and harmony.",
+    settings: "ISO 100 • f/2.0 • 1/500s"
+  }
 ];
-
-const ITEMS: SphereItem[] = IMAGES.map((img, i) => ({
-  id: i,
-  image: img,
-  title: `Capture 0${i + 1}`,
-  description: "Shot on 35mm film."
-}));
 
 interface PhotoGalleryProps {
   onClose: () => void;
@@ -52,31 +165,46 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onClose }) => {
   const [isDragging, setIsDragging] = useState(false);
   const lastMousePos = useRef({ x: 0, y: 0 });
   const requestRef = useRef<number>(0);
-  const autoRotateSpeed = useRef({ x: 0.08, y: 0.12 });
+  const autoRotateSpeed = useRef({ x: 0.2, y: 0.25 }); // Slightly increased auto-rotation
 
   // Geometry configuration
-  // High Scale Ratio: Perspective (P) is close to Radius (R).
-  // Formula: Scale = P / (P + z). 
-  // At z = -R (Front), Scale = P / (P - R).
-  // By keeping P close to R, we get huge magnification at the front, and normal size at sides.
   const [config, setConfig] = useState({ radius: 260, itemSize: 35, perspective: 320 });
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width < 640) {
-        // Mobile: High magnification, very small base size
-        setConfig({ radius: 120, itemSize: 20, perspective: 145 }); 
-      } else if (width < 1024) {
-        // Tablet
-        setConfig({ radius: 180, itemSize: 28, perspective: 220 });
-      } else if (width < 1600) {
-        // Standard Desktop: Front scale ~5.3x (186px), Side scale ~1x (35px)
-        setConfig({ radius: 260, itemSize: 35, perspective: 320 });
+      const height = window.innerHeight;
+      const minDimension = Math.min(width, height);
+      const isMobile = width < 768;
+
+      // REDUCED RADIUS: Sphere takes up ~25% (was 35%) of smallest dimension for a tighter cluster
+      let targetRadius = minDimension * 0.25;
+
+      if (isMobile) {
+        // Mobile Clamps
+        targetRadius = Math.max(targetRadius, 100);
+        targetRadius = Math.min(targetRadius, 150);
       } else {
-        // 4K / Ultra-wide Desktop: Larger Sphere
-        setConfig({ radius: 360, itemSize: 50, perspective: 450 });
+        // Desktop Clamps: 
+        targetRadius = Math.max(targetRadius, 180); 
+        targetRadius = Math.min(targetRadius, 300); 
       }
+
+      // Fisheye Effect: Keep perspective close to radius
+      // 1.2 is tight enough to magnify front items significantly
+      const perspective = targetRadius * 1.2;
+
+      // Item Size: INCREASED base ratio (0.22 vs 0.14) 
+      // This compensates for the smaller radius, keeping images large enough to see
+      let itemSize = targetRadius * 0.22;
+      // Clamp item size for usability
+      itemSize = Math.max(30, Math.min(itemSize, 70));
+
+      setConfig({
+        radius: targetRadius,
+        itemSize: itemSize,
+        perspective: perspective
+      });
     };
 
     handleResize();
@@ -219,7 +347,7 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onClose }) => {
       </button>
 
       {/* 3D Sphere Container */}
-      <div className="relative w-full h-full flex items-center justify-center perspective-container">
+      <div className="relative w-full h-full flex items-center justify-center perspective-container overflow-hidden">
         {projectedPoints.map((point) => {
           const item = ITEMS.find(i => i.id === point.id)!;
           
@@ -247,6 +375,7 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onClose }) => {
               <img 
                 src={item.image} 
                 alt={item.title}
+                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover rounded-full pointer-events-none select-none"
                 draggable={false}
               />
@@ -283,10 +412,11 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onClose }) => {
                   <X size={20} />
                 </button>
                 
-                <div className="flex-1 relative overflow-hidden bg-black flex items-center justify-center h-[50vh] md:h-auto">
+                <div className="flex-1 relative overflow-hidden bg-black flex items-center justify-center h-[40vh] md:h-auto">
                   <img 
                     src={selectedItem.image} 
                     alt={selectedItem.title}
+                    referrerPolicy="no-referrer"
                     className="w-full h-full object-contain md:object-cover"
                   />
                 </div>
@@ -295,11 +425,11 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ onClose }) => {
                   <div className="text-xs font-mono uppercase tracking-widest text-white/50 mb-2">Portfolio</div>
                   <h3 className="text-3xl font-bold mb-4">{selectedItem.title}</h3>
                   <p className="text-white/60 leading-relaxed mb-6">
-                    {selectedItem.description} Captured during my travels. I look for natural lighting and interesting textures that tell a story without words.
+                    {selectedItem.description}
                   </p>
                   <div className="mt-auto">
                       <div className="h-px w-full bg-white/10 mb-4"></div>
-                      <span className="text-xs text-white/30 font-mono">ISO 400 • f/2.8 • 1/125s</span>
+                      <span className="text-xs text-white/30 font-mono">{selectedItem.settings}</span>
                   </div>
                 </div>
              </motion.div>
