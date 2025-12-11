@@ -48,8 +48,8 @@ const Background: React.FC = () => {
         }}
       ></div>
 
-      {/* 3. Noise Overlay - Essential for texture */}
-      <div className="absolute inset-0 bg-noise opacity-[0.25] mix-blend-overlay"></div>
+      {/* 3. Noise Overlay - Increased Opacity for texture */}
+      <div className="absolute inset-0 bg-noise opacity-[0.45] mix-blend-overlay"></div>
       
       {/* 4. Vignette for depth */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/60"></div>

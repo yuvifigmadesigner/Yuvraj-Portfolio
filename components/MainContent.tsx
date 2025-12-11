@@ -4,6 +4,7 @@ import { Smile, Layers, Sparkles, Code, ChevronDown, ArrowUpRight } from 'lucide
 import { useISTTime } from '../hooks/useSeattleTime';
 import LightRays from './LightRays';
 import ServiceModal from './ServiceModal';
+import SplitText from './SplitText';
 
 const MainContent: React.FC = () => {
   const istTime = useISTTime();
@@ -49,7 +50,7 @@ const MainContent: React.FC = () => {
 
           {/* Hero Headline */}
           <h1 className="text-6xl md:text-8xl lg:text-[7rem] 2xl:text-[10rem] font-medium tracking-tighter leading-none mb-24 md:mb-32 2xl:mb-40 drop-shadow-lg">
-            Hi, this is Yuvi.
+            Hi, this is <SplitText text="Yuvi." className="inline-block" delay={200} />
           </h1>
 
           {/* Footer Info */}

@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { FileText, Linkedin, Instagram, Menu, X, ChevronRight } from 'lucide-react';
-import { NAV_LINKS, SOCIAL_LINKS } from '../constants';
+import { FileText, Linkedin, Instagram, Menu, X } from 'lucide-react';
+import { SOCIAL_LINKS, NAV_LINKS } from '../constants';
 
 interface HeaderProps {
   onNavigate: (page: 'home' | 'work' | 'about') => void;
@@ -23,16 +23,11 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
     };
   }, [isMenuOpen]);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, label: string) => {
-    e.preventDefault();
-    if (label === 'Home') onNavigate('home');
-    else if (label === 'Work') onNavigate('work');
-    else if (label === 'About') onNavigate('about');
-    
-    setIsMenuOpen(false); // Close menu on navigation
+  const handleNavClick = (label: string) => {
+    onNavigate(label.toLowerCase() as 'home' | 'work' | 'about');
+    setIsMenuOpen(false);
   };
 
-  // Helper to find link by label
   const getLink = (label: string) => SOCIAL_LINKS.find(l => l.label === label)?.href || '#';
 
   const getIcon = (label: string) => {
@@ -47,71 +42,63 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
   return (
     <>
       <header className="border-b border-white/10 relative z-20 bg-[#111827]/80 backdrop-blur-md md:bg-transparent md:backdrop-blur-none w-full">
-        <div className="flex items-center justify-between py-6 md:py-8 px-6 md:px-12 w-full max-w-screen-2xl 2xl:max-w-[1800px] mx-auto">
-          {/* Name / Logo */}
+        <div className="relative flex items-center justify-between py-6 md:py-8 px-6 md:px-12 w-full max-w-screen-2xl 2xl:max-w-[1800px] mx-auto">
+          {/* LEFT: Name / Logo */}
           <div 
-            className="text-white font-medium text-lg 2xl:text-2xl tracking-wide cursor-pointer hover:opacity-80 transition-opacity z-50 relative"
-            onClick={() => {
-              onNavigate('home');
-              setIsMenuOpen(false);
-            }}
+            className="text-white font-medium text-lg 2xl:text-2xl tracking-wide cursor-pointer hover:opacity-80 transition-opacity z-30"
+            onClick={() => handleNavClick('home')}
           >
             Yuvraj Gupta
           </div>
 
-          {/* DESKTOP NAVIGATION */}
-          <nav className="hidden md:flex items-center space-x-8 2xl:space-x-12">
-            {NAV_LINKS.map((link) => {
-              const isActive = 
-                (link.label === 'Home' && currentPage === 'home') ||
-                (link.label === 'Work' && currentPage === 'work') || 
-                (link.label === 'About' && currentPage === 'about');
-
-              return (
-                <a 
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.label)}
-                  className={`text-sm 2xl:text-lg font-medium transition-colors ${
-                    isActive ? 'text-white' : 'text-white/60 hover:text-white'
-                  }`}
-                >
-                  {link.label}
-                </a>
-              );
-            })}
+          {/* CENTER: Desktop Nav (Absolutely Positioned) */}
+          <nav className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center space-x-8 2xl:space-x-12 z-20">
+            {NAV_LINKS.map((link) => (
+              <button
+                key={link.label}
+                onClick={() => handleNavClick(link.label)}
+                className={`text-sm 2xl:text-base tracking-wide transition-colors duration-300 hover:text-white ${
+                  currentPage === link.label.toLowerCase() ? 'text-white font-medium' : 'text-white/60'
+                }`}
+              >
+                {link.label}
+              </button>
+            ))}
           </nav>
 
-          {/* DESKTOP SOCIAL ICONS */}
-          <div className="hidden md:flex items-center space-x-5 2xl:space-x-8 text-white">
-            <div className="relative group">
-              <a href={getLink('CV')} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity block" aria-label="Resume">
-                <FileText size={20} strokeWidth={1.5} className="2xl:w-6 2xl:h-6" />
-              </a>
-              <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-white/10 backdrop-blur-sm border border-white/5 text-white text-[10px] uppercase tracking-wider rounded opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap">Resume</span>
+          {/* RIGHT: Social Icons (Desktop) & Mobile Toggle */}
+          <div className="flex items-center gap-6 z-30">
+            {/* Desktop Social Icons */}
+            <div className="hidden md:flex items-center space-x-5 2xl:space-x-8 text-white">
+              <div className="relative group">
+                <a href={getLink('CV')} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity block" aria-label="Resume">
+                  <FileText size={20} strokeWidth={1.5} className="2xl:w-6 2xl:h-6" />
+                </a>
+                <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-white/10 backdrop-blur-sm border border-white/5 text-white text-[10px] uppercase tracking-wider rounded opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap">Resume</span>
+              </div>
+              <div className="relative group">
+                <a href={getLink('LinkedIn')} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity block" aria-label="LinkedIn">
+                  <Linkedin size={20} strokeWidth={1.5} className="2xl:w-6 2xl:h-6" />
+                </a>
+                <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-white/10 backdrop-blur-sm border border-white/5 text-white text-[10px] uppercase tracking-wider rounded opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap">LinkedIn</span>
+              </div>
+              <div className="relative group">
+                <a href={getLink('Instagram')} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity block" aria-label="Instagram">
+                  <Instagram size={20} strokeWidth={1.5} className="2xl:w-6 2xl:h-6" />
+                </a>
+                <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-white/10 backdrop-blur-sm border border-white/5 text-white text-[10px] uppercase tracking-wider rounded opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap">Instagram</span>
+              </div>
             </div>
-            <div className="relative group">
-              <a href={getLink('LinkedIn')} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity block" aria-label="LinkedIn">
-                <Linkedin size={20} strokeWidth={1.5} className="2xl:w-6 2xl:h-6" />
-              </a>
-              <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-white/10 backdrop-blur-sm border border-white/5 text-white text-[10px] uppercase tracking-wider rounded opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap">LinkedIn</span>
-            </div>
-            <div className="relative group">
-              <a href={getLink('Instagram')} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity block" aria-label="Instagram">
-                <Instagram size={20} strokeWidth={1.5} className="2xl:w-6 2xl:h-6" />
-              </a>
-              <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-white/10 backdrop-blur-sm border border-white/5 text-white text-[10px] uppercase tracking-wider rounded opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap">Instagram</span>
-            </div>
-          </div>
 
-          {/* MOBILE MENU BUTTON (Trigger) */}
-          <button 
-            className="md:hidden text-white p-1 z-50 relative focus:outline-none"
-            onClick={() => setIsMenuOpen(true)}
-            aria-label="Open menu"
-          >
-            <Menu size={28} />
-          </button>
+            {/* Mobile Menu Button */}
+            <button 
+              className="md:hidden text-white p-1 focus:outline-none"
+              onClick={() => setIsMenuOpen(true)}
+              aria-label="Open menu"
+            >
+              <Menu size={28} />
+            </button>
+          </div>
         </div>
       </header>
 
@@ -125,10 +112,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
         <div className="flex items-center justify-between py-6 md:py-8 border-b border-white/10 mb-8">
            <div 
              className="text-white font-medium text-lg tracking-wide cursor-pointer"
-             onClick={() => {
-                onNavigate('home');
-                setIsMenuOpen(false);
-             }}
+             onClick={() => handleNavClick('home')}
            >
              Yuvraj Gupta
            </div>
@@ -142,47 +126,33 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
            </button>
         </div>
 
-        {/* Navigation Links */}
-        <div className="flex flex-col space-y-6 px-2">
-          {NAV_LINKS.map((link, index) => {
-            const isActive = 
-              (link.label === 'Home' && currentPage === 'home') ||
-              (link.label === 'Work' && currentPage === 'work') || 
-              (link.label === 'About' && currentPage === 'about');
-
-            return (
-              <a 
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.label)}
-                className={`text-4xl font-light tracking-tight flex items-center justify-between group ${
-                  isActive ? 'text-white' : 'text-white/50'
-                }`}
-                style={{ transitionDelay: `${index * 50}ms` }}
-              >
-                <span>{link.label}</span>
-                <ChevronRight 
-                  size={24} 
-                  className={`opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-300 ${isActive ? 'opacity-100 translate-x-0' : ''}`} 
-                />
-              </a>
-            );
-          })}
+        {/* Mobile Nav Links */}
+        <div className="flex flex-col items-center justify-center space-y-8 flex-1">
+          {NAV_LINKS.map((link) => (
+            <button
+              key={link.label}
+              onClick={() => handleNavClick(link.label)}
+              className={`text-3xl font-light tracking-tight transition-colors duration-300 ${
+                currentPage === link.label.toLowerCase() ? 'text-white' : 'text-white/40 hover:text-white'
+              }`}
+            >
+              {link.label}
+            </button>
+          ))}
+          
+          <div className="w-12 h-px bg-white/10 my-8"></div>
         </div>
 
-        {/* Divider */}
-        <div className="w-full h-px bg-white/10 my-10"></div>
-
-        {/* Social Links */}
-        <div className="mt-auto mb-10 space-y-4 px-2">
-           <h3 className="text-xs font-mono uppercase tracking-widest text-white/40 mb-4">Connect</h3>
+        {/* Mobile Social Links */}
+        <div className="mb-10 space-y-4 px-2">
+           <h3 className="text-xs font-mono uppercase tracking-widest text-white/40 mb-4 text-center">Connect</h3>
            {SOCIAL_LINKS.map((link) => (
              <a 
                key={link.label}
                href={link.href}
                target="_blank" 
                rel="noopener noreferrer"
-               className="flex items-center space-x-4 text-white/70 hover:text-white transition-colors p-2 -mx-2 hover:bg-white/5 rounded-lg"
+               className="flex items-center justify-center space-x-4 text-white/70 hover:text-white transition-colors p-3 rounded-lg hover:bg-white/5"
              >
                {getIcon(link.label)}
                <span className="text-lg font-light">{link.label === 'CV' ? 'Resume' : link.label}</span>
